@@ -199,7 +199,7 @@ const ContactSubmissions = () => {
   const generatePaginationButtons = () => {
     if (isMobile) {
       return (
-        <>
+        <div className="flex">
           <button 
             className="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed" 
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
@@ -219,7 +219,7 @@ const ContactSubmissions = () => {
           >
             &gt;
           </button>
-        </>
+        </div>
       );
     }
     
@@ -315,32 +315,33 @@ const ContactSubmissions = () => {
   const visibleColumns = getVisibleColumns();
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <header className="mb-8">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
+      <header className="mb-6 sm:mb-8">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             <span className="text-blue-600">Jeil</span>
             <span className="text-gray-400 mx-2">::</span>
             <span>Contact Submissions</span>
           </h1>
-          <p className="text-gray-600">Manage contact form submissions</p>
+          <p className="text-sm sm:text-base text-gray-600">Manage contact form submissions</p>
         </div>
       </header>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-        <div className="flex gap-4">
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4">
+        <div className="flex gap-2 sm:gap-4 w-full lg:w-auto">
           <button 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base flex-1 sm:flex-none"
             onClick={exportToCSV}
           >
-            Export CSV
+            <span className="hidden sm:inline">Export CSV</span>
+            <span className="sm:hidden">Export</span>
           </button>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full lg:w-auto">
           <select 
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
           >
             <option value="all">All Status</option>
             <option value="Pending">Pending</option>
@@ -351,7 +352,7 @@ const ContactSubmissions = () => {
           <select 
             value={spamFilter}
             onChange={(e) => setSpamFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
           >
             <option value="all">All Messages</option>
             <option value="not-spam">Not Spam</option>
@@ -360,7 +361,7 @@ const ContactSubmissions = () => {
           <input 
             type="text" 
             placeholder="Search..." 
-            className="w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full sm:w-64 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -373,8 +374,126 @@ const ContactSubmissions = () => {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3"></div>
             Loading submissions...
           </div>
+        ) : isMobile ? (
+          // Mobile Card View
+          <div className="divide-y divide-gray-200">
+            {currentRecords.length > 0 ? (
+              currentRecords.map((submission, index) => {
+                const displayIndex = indexOfFirstRecord + index + 1;
+                return (
+                  <div key={submission._id || index} className="p-4 hover:bg-gray-50">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center space-x-2">
+                        <button 
+                          className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-colors ${
+                            expandedRow === (submission._id || index) 
+                              ? "bg-blue-600 border-blue-600 text-white" 
+                              : "bg-white border-gray-300 text-gray-600 hover:border-blue-500"
+                          }`}
+                          onClick={() => toggleRowExpand(submission._id || index)}
+                          aria-expanded={expandedRow === (submission._id || index)}
+                          aria-label={expandedRow === (submission._id || index) ? "Collapse details" : "Expand details"}
+                        >
+                          {expandedRow === (submission._id || index) ? "-" : "+"}
+                        </button>
+                        <span className="text-sm font-medium text-gray-900">#{displayIndex}</span>
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {submission.createdAt ? new Date(submission.createdAt).toLocaleDateString() : ""}
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div>
+                        <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Name</span>
+                        <p className="text-sm text-gray-900">{submission.name}</p>
+                      </div>
+                      
+                      {submission.subject && (
+                        <div>
+                          <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</span>
+                          <p className="text-sm text-gray-900">{submission.subject}</p>
+                        </div>
+                      )}
+                      
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Status</span>
+                          <select
+                            value={submission.followupStatus || "Pending"}
+                            onChange={(e) => updateStatus(submission._id, e.target.value)}
+                            className={`mt-1 px-2 py-1 rounded-full text-xs font-medium border-0 focus:ring-2 focus:ring-blue-500 ${
+                              submission.followupStatus === "Read" ? "bg-green-100 text-green-800" :
+                              submission.followupStatus === "Contacted" ? "bg-blue-100 text-blue-800" :
+                              submission.followupStatus === "No Response" ? "bg-red-100 text-red-800" :
+                              "bg-yellow-100 text-yellow-800"
+                            }`}
+                          >
+                            <option value="Pending">Pending</option>
+                            <option value="Read">Read</option>
+                            <option value="Contacted">Contacted</option>
+                            <option value="No Response">No Response</option>
+                          </select>
+                        </div>
+                        
+                        <div>
+                          <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Spam</span>
+                          <select
+                            value={submission.isSpam ? "true" : "false"}
+                            onChange={(e) => updateSpamStatus(submission._id, e.target.value === "true")}
+                            className={`mt-1 px-2 py-1 rounded-full text-xs font-medium border-0 focus:ring-2 focus:ring-blue-500 ${
+                              submission.isSpam ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"
+                            }`}
+                          >
+                            <option value="false">Not Spam</option>
+                            <option value="true">Spam</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {expandedRow === (submission._id || index) && (
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <div className="space-y-3">
+                          <div>
+                            <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Email</span>
+                            <p className="text-sm text-gray-900">{submission.email}</p>
+                          </div>
+                          
+                          {submission.company && (
+                            <div>
+                              <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Company</span>
+                              <p className="text-sm text-gray-900">{submission.company}</p>
+                            </div>
+                          )}
+                          
+                          {submission.message && (
+                            <div>
+                              <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Message</span>
+                              <p className="text-sm text-gray-900">{submission.message}</p>
+                            </div>
+                          )}
+                          
+                          <div>
+                            <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Date</span>
+                            <p className="text-sm text-gray-900">{submission.createdAt ? new Date(submission.createdAt).toLocaleString() : ""}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <div className="px-6 py-12 text-center text-gray-500">
+                {searchTerm ? "No matching submissions found" : "No contact submissions found"}
+              </div>
+            )}
+          </div>
         ) : (
-          <table className="min-w-full divide-y divide-gray-200">
+          // Desktop Table View
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100" onClick={() => handleSort("_id")}>
@@ -566,14 +685,15 @@ const ContactSubmissions = () => {
               )}
             </tbody>
           </table>
+          </div>
         )}
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4">
-        <div className="text-sm text-gray-700">
+      <div className="flex flex-col sm:flex-row justify-between items-center mt-4 sm:mt-6 gap-3 sm:gap-4">
+        <div className="text-xs sm:text-sm text-gray-700">
           Showing page {currentPage} of {totalPages || 1}
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto">
           {generatePaginationButtons()}
         </div>
       </div>
