@@ -374,20 +374,9 @@ const Contact = ({ isDark = false }) => {
                         />
                     </div>
 
-                    {/* Second row - 2 cards centered */}
+                    {/* Second row - 1 card centered */}
                     <div className="flex justify-center">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl">
-                            <OurNetworkcard
-                                title="Dehej, Gujarat"
-                                address="Plot N. D-2/E/21/14, Dahej-II Industrial Estate, Tal. Vagra, Dist. Bharuch - 392110, Gujarat, India"
-                                phone1=""
-                                phone2=""
-                                emails={['', '']}
-                                linkText=""
-                                linkUrl="#contact"
-                                googleMapsUrl={'https://share.google/AnK2hnHq2PDyc3PIn'}
-                                isDark={isDark}
-                            />
                             <OurNetworkcard
                                 title="Nardana, Maharashtra"
                                 address="Plot No. B-2, Nardana Industrial Area, Bhabale - 425504, TA. Shindkheda, Dist. Dhule, Maharashtra 425404."
