@@ -254,28 +254,28 @@ const ProductDetailPage = ({ product, isDark, onClose }) => {
         },
         'slip-sheet': {
             images: [
-                'assets/products/PP_roofingsheet.jpg',
-                'assets/facility/bales.png',
+                'assets/products/slip-sheet-1.jpeg',
+                'assets/products/slip-sheet-2.png',
+                'assets/products/slip-sheet-3.png',
             ],
-            fullDescription: "Used for pallet-less material handling. When placed under an object allows it to be mobilized. Special surface properties for optimal load handling.",
+            fullDescription: "Slip sheet is used for pallet-less material handling. Slip sheets are a replacement for heavy, bulky and expensive plastic or wooden pallets. They are considerably thinner and weigh less than wooden pallets, helping to cut freight cost and free up storage space.",
             features: [
-                "Pallet-less material handling",
-                "Higher COF on top surface",
-                "Lower COF on bottom surface",
-                "100% reusable and recyclable"
+                "Replaces heavy wooden pallets",
+                "Reduces freight and transportation cost due to its lightweight construction",
+                "Saves warehouse and storage space",
+                "Increases container loading capacity",
+                "ISPM-15 compliant, hygienic, reusable & 100% recyclable"
             ],
             applications: [
-                "Material handling",
-                "Forklift operations",
-                "Warehouse optimization",
-                "Load mobilization"
+                "Consumer goods or industrial products",
+                "Domestic and international logistics",
+                "Textile and fabric rolls",
+                "Container and warehouse load handling"
             ],
             specifications: {
-                "Material handling": "Pallet-less system",
-                "Reusability": "100% reusable and recyclable",
-                "Moisture resistance": "Yes",
-                "Bacteria resistance": "Yes",
-                "Cost": "Cheaper than wooden pallets"
+                "Sizes": "Customizable",
+                "Thickness": "3 / 4 / 5 / 6 mm",
+                "Length": "Customizable"
             }
         },
         'pp-box-strapping': {
@@ -433,12 +433,66 @@ const ProductDetailPage = ({ product, isDark, onClose }) => {
             }
         },
         'upvc-foam-sheet': {
-            images: [],
-            fullDescription: "Lightweight and durable foam sheet for various applications.",
-            features: [],
-            applications: [],
+            images: [
+                'assets/products/foam-sheet-1.png',
+                'assets/products/foam-sheet-2.png',
+                'assets/products/foam-sheet-3.png',
+            ],
+            fullDescription: "We are a leading Manufacturer, Exporter, and Supplier of premium-quality uPVC Foam Sheets, including Colored PVC/WPC Foam Boards and Plain PVC/WPC Foam Boards. Manufactured using high-grade raw materials and advanced technology, our boards offer excellent strength, durability, and finish while meeting diverse customer requirements across various industries.",
+            features: [
+                "100% Water Proof, Termite Proof, Borer Proof and Rust Proof",
+                "100% Weather resistant and Fire Retardant",
+                "Resistant to Chemical & Corrosion",
+                "Light weight, strong and easy to work & process",
+                "Good sound and thermal insulation",
+                "Suitable for both indoor & outdoor application",
+                "Smooth and glossy surface suitable for direct digital printing",
+                "Non-toxic, 100% recyclable, fungus and bacteria free"
+            ],
+            applications: [
+                "Advertising: billboards, hoardings, screen printing, carving, lettering, exhibition stands & displays",
+                "Furniture: bathroom, kitchen, wall & storage cabinets, table tops, school benches and more",
+                "Construction & Real Estate: shop fitting, interior decor, ceiling, panelling, door panels and more"
+            ],
             specifications: {
-
+                "Width": "4 ft",
+                "Length": "8 ft",
+                "Thickness": "6 mm to 25 mm",
+                "Density": "Standard 0.45, 0.55, 0.60",
+                "Colour": "White, Ivory, Grey, Brown"
+            }
+        },
+        'paper-angle-board': {
+            images: [
+                'assets/products/angle-board-1.jpeg',
+                'assets/products/angle-board-2.jpeg',
+                'assets/products/angle-board-3.png',
+                'assets/products/angle-board-4.png',
+            ],
+            fullDescription: "JEIL Angle Boards & Edge Protectors are manufactured from multi-layered high strength Kraft paper bonded together to form a rigid 90° angle. Designed to protect the edges and corners of packaged products during handling and transportation.",
+            features: [
+                "High compression & impact resistance",
+                "Excellent edge & corner protection",
+                "Prevents damage during handling & transportation",
+                "Enhances pallet load stability",
+                "Compatible with stretch wrap and strapping",
+                "Cost-effective alternative to wood and plastic protectors",
+                "Available in different sizes, lengths and thickness"
+            ],
+            applications: [
+                "Corrugated box reinforcement",
+                "Palletized cargo protection",
+                "Furniture packaging",
+                "Building material packaging",
+                "Paper rolls & coils",
+                "Consumer goods or industrial products",
+                "Export packaging",
+                "Textile and fabric rolls"
+            ],
+            specifications: {
+                "Sizes": "25x25, 30x30, 35x35, 40x40, 50x50, 60x60, 75x75 & 100 x 100 mm",
+                "Thickness": "3 / 4 / 5 / 6 mm",
+                "Length": "Customizable"
             }
         },
         'edge-protector': {

@@ -93,6 +93,24 @@ const Products = ({ isDark }) => {
             description: 'Specialized film for agricultural silage applications',
             image: 'assets/products/SILAGE FILM.jpg'
         },
+        {
+            id: 'paper-angle-board',
+            name: 'Paper Angle Board & Edge Protectors',
+            description: 'High-strength Kraft paper angle boards that protect edges and corners of packaged products',
+            image: 'assets/products/angle-board-1.jpeg'
+        },
+        {
+            id: 'slip-sheet',
+            name: 'Plastic Slip Sheets',
+            description: 'Lightweight, cost-effective alternative to wooden pallets for material handling',
+            image: 'assets/products/slip-sheet-1.jpeg'
+        },
+        {
+            id: 'upvc-foam-sheet',
+            name: 'uPVC / WPC Foam Sheet',
+            description: 'Waterproof, termite-proof foam boards for advertising, furniture and construction',
+            image: 'assets/products/foam-sheet-1.png'
+        },
         // {
         //     id: 'pp-door',
         //     name: 'PP Door Panel',
