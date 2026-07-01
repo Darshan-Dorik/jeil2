@@ -165,9 +165,6 @@ const Products = ({ isDark }) => {
                     {products.map((product, index) => (
                         <motion.div
                             key={product.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: Math.min(index * 0.05, 0.4) }}
                             whileHover={{ scale: 1.02 }}
                             className={`rounded-lg overflow-hidden shadow-xl ${isDark ? 'bg-gray-800' : 'bg-white'
                                 }`}
