@@ -254,9 +254,8 @@ const ProductDetailPage = ({ product, isDark, onClose }) => {
         },
         'slip-sheet': {
             images: [
-                'assets/products/slip-sheet-1.jpeg',
-                'assets/products/slip-sheet-2.png',
-                'assets/products/slip-sheet-3.png',
+                'assets/products/slip-sheet-new-1.jpg',
+                'assets/products/slip-sheet-new-2.jpg',
             ],
             fullDescription: "Slip sheet is used for pallet-less material handling. Slip sheets are a replacement for heavy, bulky and expensive plastic or wooden pallets. They are considerably thinner and weigh less than wooden pallets, helping to cut freight cost and free up storage space.",
             features: [
@@ -273,8 +272,8 @@ const ProductDetailPage = ({ product, isDark, onClose }) => {
                 "Container and warehouse load handling"
             ],
             specifications: {
-                "Sizes": "Customizable",
-                "Thickness": "3 / 4 / 5 / 6 mm",
+                "Width": "Customizable",
+                "Thickness": "750 microns to 1200 microns",
                 "Length": "Customizable"
             }
         },
@@ -464,10 +463,11 @@ const ProductDetailPage = ({ product, isDark, onClose }) => {
         },
         'paper-angle-board': {
             images: [
-                'assets/products/angle-board-1.jpeg',
-                'assets/products/angle-board-2.jpeg',
-                'assets/products/angle-board-3.png',
-                'assets/products/angle-board-4.png',
+                'assets/products/angle-board-new-4.jpg',
+                'assets/products/angle-board-new-1.jpg',
+                'assets/products/angle-board-new-2.jpg',
+                'assets/products/angle-board-new-3.png',
+                'assets/products/angle-board-new-5.jpg',
             ],
             fullDescription: "JEIL Angle Boards & Edge Protectors are manufactured from multi-layered high strength Kraft paper bonded together to form a rigid 90° angle. Designed to protect the edges and corners of packaged products during handling and transportation.",
             features: [

@@ -97,13 +97,13 @@ const Products = ({ isDark }) => {
             id: 'paper-angle-board',
             name: 'Paper Angle Board & Edge Protectors',
             description: 'High-strength Kraft paper angle boards that protect edges and corners of packaged products',
-            image: 'assets/products/angle-board-1.jpeg'
+            image: 'assets/products/angle-board-new-4.jpg'
         },
         {
             id: 'slip-sheet',
             name: 'Plastic Slip Sheets',
             description: 'Lightweight, cost-effective alternative to wooden pallets for material handling',
-            image: 'assets/products/slip-sheet-1.jpeg'
+            image: 'assets/products/slip-sheet-new-1.jpg'
         },
         {
             id: 'upvc-foam-sheet',
