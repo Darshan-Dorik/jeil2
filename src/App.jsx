@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from './hooks/useTheme';
 import Header from './components/Header';
@@ -12,18 +12,12 @@ import Contact from './pages/Contact';
 import NotFoundPage from './components/NotFoundPage';
 import AdminPanel from './pages/AdminPanel';
 
-function App() {
-    const { theme, toggleTheme } = useTheme();
-    const isDark = theme === 'dark';
+function AnimatedRoutes({ isDark }) {
+    const location = useLocation();
 
     return (
-        <Router>
-            <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
-                }`}>
-                <Header isDark={isDark} toggleTheme={toggleTheme} />
-
-                <AnimatePresence mode="wait">
-                    <Routes>
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
                         <Route path="/" element={
                             <motion.div
                                 initial={{ opacity: 0 }}
@@ -89,8 +83,22 @@ function App() {
                                 <NotFoundPage isDark={isDark} />
                             </motion.div>
                         } />
-                    </Routes>
-                </AnimatePresence>
+            </Routes>
+        </AnimatePresence>
+    );
+}
+
+function App() {
+    const { theme, toggleTheme } = useTheme();
+    const isDark = theme === 'dark';
+
+    return (
+        <Router>
+            <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
+                }`}>
+                <Header isDark={isDark} toggleTheme={toggleTheme} />
+
+                <AnimatedRoutes isDark={isDark} />
 
                 <Footer isDark={isDark} />
             </div>
